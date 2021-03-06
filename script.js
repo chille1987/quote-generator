@@ -6,18 +6,18 @@ let quoteText = document.getElementById('quote')
 let author = document.querySelector('.author')
 let quotes = []
 
-const loadingStarted = () => {
+const showLoader = () => {
   loader.hidden = false
   quoteWrapper.hidden = true
 }
-const loadingFinished = () => {
+const hideLoader = () => {
   loader.hidden = true
   quoteWrapper.hidden = false
 }
 
 // Get Quotes
 async function getQuotes() {
-  loadingStarted()
+  showLoader()
   const url = 'https://type.fit/api/quotes'
   try {
     const response = await fetch(url)
@@ -25,7 +25,7 @@ async function getQuotes() {
   } catch(error) {
     alert('Error: ' + error)
   }
-  loadingFinished()
+  hideLoader()
 }
 
 // Get Single Quote
